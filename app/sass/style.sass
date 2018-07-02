@@ -165,9 +165,10 @@ a
 		width: 100%
 		display: flex
 		justify-content: space-around
-		padding: 10px
+		padding: 0 10px
 		border-radius: 5px
 		list-style: none
+		min-height: 45px
 
 		&_navigation
 			background-color: ($c-bg)
@@ -187,21 +188,8 @@ a
 			padding: 10px
 			list-style: none
 
-	&__item
-		display: block
-
-		&_2
-			width: 100%
-
-		&_navigation
-			position: relative
-
-			&:hover 
-				.menu__items_2
-					display: block
-
-				.menu__link_navigation::after
-					transform: scaleY(-1)
+			&_open
+				display: block
 
 	&__link
 		text-transform: uppercase
@@ -210,6 +198,7 @@ a
 		position: relative
 		width: 100%
 		display: block
+		padding: 10px 0
 
 		&::after
 			position: absolute
@@ -227,7 +216,10 @@ a
 				border-top: 4px solid #000
 				border-bottom: none
 				right: 0
-				top: 8px
+				top: 18px
+
+			&_open::after
+				transform: scaleY(-1)
 
 		&:hover
 			color: #fff
@@ -244,12 +236,25 @@ a
 				border-bottom: 8px solid #ececec
 				border-top: none
 				left: calc(50% - 15px)
-				top: calc(100% + 2px)
+				top: calc(100% - 7px)
 
 			&_open
 
 				&::after
 					display: block
+
+	&__item
+		display: block
+
+		&_2
+			width: 100%
+
+			.menu__link
+				padding: 0
+
+		&_navigation
+			position: relative
+
 .menu-open
 	display: none
 	position: relative
@@ -349,21 +354,8 @@ a
 	float: right
 	position: relative
 
-	&__list
-		position: relative
-		overflow: hidden
-		width: 100%
-
-	&__wrap
-		position: relative
-		top: 0
-		left: 0
-		display: flex
-		width: calc(100% * 3)
-		align-items: stretch
-
 	&__item
-		width: calc(100% / 3)
+		width: 100%
 		display: flex
 		align-items: center
 
@@ -380,28 +372,10 @@ a
 			right: 10px
 			transform: scaleX(-1)
 
-	&__navigation
-		position: absolute
-		width: 100%
-		display: flex
-		justify-content: center
-		bottom: 10px
-		left: 0
-
-	&__btn
-		width: 9px
-		height: 9px
-		margin: 0 3px
-		background-color: ($c-second)
-		border-radius: 50%
-
-		&_active
-			background-color: ($c-bg)
-
 .arow
 	position: absolute
 	top: calc(50% - 21px)
-	z-index: 20
+	z-index: 10
 
 	&__line
 		fill: none
@@ -430,22 +404,11 @@ a
 	background-color: #ececec
 	border-radius: 0 0 5px 5px
 	padding: 30px 20px
-
-	&__list
-		position: relative
-		overflow: hidden
-		width: 100%
-
-	&__wrap
-		position: relative
-		top: 0
-		left: 0
-		display: flex
-		width: 900%
-		align-items: stretch
 	
 	&__item
 		padding: 0 30px
+		display: flex
+		align-items: stretch
 
 	&__block
 		display: flex
@@ -453,7 +416,7 @@ a
 		align-items: center
 		border: 2px solid #fff
 		background-color: #fff
-		width: 170px
+		// width: 170px
 		border-radius: 5px
 		text-align: center
 
@@ -662,6 +625,52 @@ a
 		&_white
 			color: #fff
 
+.owl-arow
+	width: 100%
+	display: flex
+	justify-content: space-between
+	position: absolute
+	top: calc(50% - 21px)
+	left: 0
+	padding: 0 10px
+	height: 42px
+	opacity: 0
+	z-index: 11
+	height: 0
+
+	button
+		width: 30px
+		height: 42px
+
+.owl-btn
+	position: absolute
+	width: 100%
+	left: 0
+	bottom: 10px
+	z-index: 20
+	display: flex
+	justify-content: center
+
+	button
+		width: 9px
+		height: 9px
+		margin: 0 3px
+		background-color: ($c-second)
+		border-radius: 50%
+		border: none
+		outline: none
+		box-shadow: none
+
+		&.active
+			background-color: ($c-bg)
+
+
+.product
+	.owl-stage, 
+	.owl-item
+		display: flex !important
+		align-items: stretch !important
+
 @media screen and (max-width: 800px)
 
 	.head
@@ -684,10 +693,13 @@ a
 
 		&__items_navigation 
 			display: block
+			padding: 10px
 		
 		&__item_navigation
 			display: none
-			padding-top: 10px
+
+		&__link_navigation
+			padding: 5px 0
 
 		&__items_2
 			position: static
@@ -763,9 +775,22 @@ a
 			position: relative
 			padding: 10px 0
 
+		&__link_product
+			z-index: 15
+			
+			&::after
+				transform: rotate(-90deg)
+				top: calc(50% - 7px)
+				left: 85px
+
 	.product
-		left: -10px
+		left: 104px
 		right: -10px
+		top: 0
+		padding: 30px 5px
+
+		&__item
+			padding: 0 5px
 	.top
 
 		&__item

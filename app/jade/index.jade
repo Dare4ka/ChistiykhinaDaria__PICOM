@@ -5,48 +5,12 @@ html(lang="en")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1")
 		title Document
 		link(href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i" rel="stylesheet")
+		link(rel="stylesheet" href="css/owl.carousel.css")
+		link(rel="stylesheet" href="css/owl.theme.default.css")
 		link(rel="stylesheet", href="css/style.css")
 	body
 		.container
-			header.head
-				.logo
-					a.logo__link(href="#")
-						img.logo__img(src="image/pest911.png", alt="pest911")
-				.contact
-					.contact__block
-						.contact__wrap
-							p.contact__phone Москва: 
-								a(href="tel:+7(499)505-50-03").contact__number
-									span.contact__number_think +7(499)
-									| 505-50-03
-							p.contact__phone Регионы РФ: 
-								a(href="tel:08003335911").contact__number 0 800 3335 911
-						.contact__wrap
-							p.communications
-								a(href="#").communications__link Заказать звонок 
-								br
-								| или 
-								a(href="#").communications__link написать нам
-					.contact__block
-						form.search
-							input(type="search" placeholder="Поиск среди 35 000 товаров").search__area
-							button(type="submit").search__btn
-								svg(width="16" height="16" viewBox="0 0 16 16").search__img-block
-									path(d="M713.663,89.636a5.686,5.686,0,0,1,7.937-.04c2.181,2.141,1.688,5.687-.43,7.766a5.29,5.29,0,0,1-7.547.066A5.439,5.439,0,0,1,713.663,89.636Zm0.724,0.734a4.406,4.406,0,1,1-.117,6.356A4.467,4.467,0,0,1,714.387,90.37Zm5.707,6.755,1.031-1.062L726,101l-1,1ZM722,100l2-2,4,4-2,2Z" transform="translate(-712 -88)").search__img
-				.basket
-					p.communications
-						a(href="#").communications__link Войти 
-						| или 
-						a(href="#").communications__link зарегистрироваться
-					.basket__block
-						.basket__wrap
-							.basket__name
-								img(src="image/basket.png", alt="")
-								a(href="#").basket__link Корзина
-							p.basket__info
-								span.basket__total 1 400 
-								| руб.
-						p.basket__delivery Доставка: с 09:00 до 19:00 (МСК)
+			include header
 			nav.menu.menu_navigation
 				ul.menu__items.menu__items_navigation
 					.menu-open
@@ -117,48 +81,45 @@ html(lang="en")
 							h3.question__title Видео
 							p.question__text Полезные советы по борьбе с вредителями в саду, дома и на производстве.
 				.slider
-					.slider__list
-						.slider__wrap
-							.slider__item
-								img(src="image/slider.jpg", alt="").slider__img
-							.slider__item
-								img(src="", alt="slider 2").slider__img
-							.slider__item
-								img(src="", alt="slider3").slider__img
+					.owl-carousel.owl-theme#slider
+						.slider__item
+							img(src="image/slider.jpg", alt="").slider__img
+						.slider__item
+							img(src="", alt="slider 2").slider__img
+						.slider__item
+							img(src="", alt="slider3").slider__img
+					.owl-arow#slider-arow
+					.owl-btn#slider-btn
 					.arow.slider__arow_prev.slider__arow_prev_nav
 						svg(width="15" height="42").arow__block
 							polyline(points="15,0 1,21 15,42").arow__line.arow__line_white
 					.arow.slider__arow_next.slider__arow_next_nav
 						svg(width="15" height="42").arow__block
 							polyline(points="15,0 1,21 15,42").arow__line.arow__line_white
-					.slider__navigation
-						.slider__btn.slider__btn_active
-						.slider__btn
-						.slider__btn
 			section.block
 				.menu.menu_product
 					ul.menu__items.menu__items_product
 						li.menu__item.menu__item_product
 							a.menu__link.menu__link_product.menu__link_product_open(href="#") Новинки
 							.product.product_open
-								.product__list.product__list_1
-									.product__wrap.product__wrap_1
-										mixin product(number, img, name, cost)
-											div(class="product__item product__item_#{number}")
-												a.product__block(href="")
-													.product__img-block
-														img(src="image/#{img}").product__img
-													p.product__name= name
-													p.product__cost
-														span.product__cost_bold= cost
-														|  руб.
-										+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "11 111")
-										+product("1", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("1", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
-										+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("1", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("1", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-carousel.owl-theme#carousel-1
+									mixin product(number, img, name, cost)
+										div(class="product__item product__item_#{number}")
+											a.product__block(href="")
+												.product__img-block
+													img(src="image/#{img}").product__img
+												p.product__name= name
+												p.product__cost
+													span.product__cost_bold= cost
+													|  руб.
+									+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "11 111")
+									+product("1", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("1", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+									+product("1", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("1", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("1", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-arow#arow-1
 								.arow.product__arow_prev.product__arow_prev_1
 									svg(width="15" height="42").arow__block
 										polyline(points="15,0 1,21 15,42").arow__line.arow__line_gray
@@ -168,15 +129,15 @@ html(lang="en")
 						li.menu__item.menu__item_product
 							a.menu__link.menu__link_product(href="#") Рекомендуем
 							.product
-								.product__list.product__list_2
-									.product__wrap.product__wrap_2
-										+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "22 222")
-										+product("2", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("2", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
-										+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("2", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("2", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-carousel.owl-theme#carousel-2
+									+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "22 222")
+									+product("2", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("2", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+									+product("2", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("2", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("2", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-arow#arow-2
 								.arow.product__arow_prev.product__arow_prev_2
 									svg(width="15" height="42").arow__block
 										polyline(points="15,0 1,21 15,42").arow__line.arow__line_gray
@@ -186,15 +147,15 @@ html(lang="en")
 						li.menu__item.menu__item_product
 							a.menu__link.menu__link_product(href="#") Хиты продаж
 							.product
-								.product__list.product__list_3
-									.product__wrap.product__wrap_3
-										+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "33 333")
-										+product("3", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("3", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
-										+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("3", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("3", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-carousel.owl-theme#carousel-3
+									+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "33 333")
+									+product("3", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("3", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+									+product("3", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("3", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("3", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-arow#arow-3
 								.arow.product__arow_prev.product__arow_prev_3
 									svg(width="15" height="42").arow__block
 										polyline(points="15,0 1,21 15,42").arow__line.arow__line_gray
@@ -204,15 +165,15 @@ html(lang="en")
 						li.menu__item.menu__item_product
 							a.menu__link.menu__link_product(href="#") Акции
 							.product
-								.product__list.product__list_4
-									.product__wrap.product__wrap_4
-										+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "44 444")
-										+product("4", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("4", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
-										+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("4", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("4", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-carousel.owl-theme#carousel-4
+									+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "44 444")
+									+product("4", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("4", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+									+product("4", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("4", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("4", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-arow#arow-4
 								.arow.product__arow_prev.product__arow_prev_4
 									svg(width="15" height="42").arow__block
 										polyline(points="15,0 1,21 15,42").arow__line.arow__line_gray
@@ -222,15 +183,15 @@ html(lang="en")
 						li.menu__item.menu__item_product
 							a.menu__link.menu__link_product(href="#") Бренды
 							.product
-								.product__list.product__list_5
-									.product__wrap.product__wrap_5
-										+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "55 555")
-										+product("5", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("5", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
-										+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
-										+product("5", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
-										+product("5", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-carousel.owl-theme#carousel-5
+									+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "55 555")
+									+product("5", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("5", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+									+product("5", "product1.png", "«Коготь» SuperCat Ловушка для мышей", "19 890")
+									+product("5", "product2.png", "Крысоловка Swissinno SuperCat", "3 200")
+									+product("5", "product4.png", "Victors Электронный уничтожитель грызунов", "2 850")
+								.owl-arow#arow-5
 								.arow.product__arow_prev.product__arow_prev_5
 									svg(width="15" height="42").arow__block
 										polyline(points="15,0 1,21 15,42").arow__line.arow__line_gray
@@ -279,84 +240,12 @@ html(lang="en")
 					p.info__about Заполните 
 						a(href="#").info__all анкету
 						|  и получайте индивидуальные предложения!
-		footer.footer
-			.container
-				.block.footer__wrap
-					.footer__block
-						h3.footer__title О нас
-						ul.footer__menu
-							li.footer__item
-								a(href="#").footer__link О компании
-							li.footer__item
-								a(href="#").footer__link Отзывы
-							li.footer__item
-								a(href="#").footer__link Мы и СМИ
-							li.footer__item
-								a(href="#").footer__link База знаний
-							li.footer__item
-								a(href="#").footer__link Контакты
-							li.footer__item
-								a(href="#").footer__link Лента событий
-					.footer__block
-						h3.footer__title Сервис
-						ul.footer__menu
-							li.footer__item
-								a(href="#").footer__link Условия доставки
-							li.footer__item
-								a(href="#").footer__link Условия оплаты
-							li.footer__item
-								a(href="#").footer__link Условия возврата
-							li.footer__item
-								a(href="#").footer__link Оптовикам
-							li.footer__item
-								a(href="#").footer__link Гарантийные обязательства
-							li.footer__item
-								a(href="#").footer__link Конфиденциальность
-					.footer__block
-						h3.footer__title Способы оплаты
-						ul.footer__menu.footer__menu_img.footer__menu_flex
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img WebMoney
-									img(src="image/WebMoney.png" alt="WebMoney").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img QIWI
-									img(src="image/QIWI.png" alt="QIWI").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img MasterCard
-									img(src="image/MasterCard.png" alt="MasterCard").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img Связной
-									img(src="image/sviasnoy.png" alt="Связной").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img Яндекс Деньги
-									img(src="image/Yandex.png" alt="Яндекс Деньги").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img VISA
-									img(src="image/VISA.png" alt="VISA").footer__img
-					.footer__block
-						h3.footer__title Способы доставки
-						ul.footer__menu.footer__menu_img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img Почта Россиии
-									img(src="image/post.png" alt="Почта Россиии").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img Деловые линии
-									img(src="image/delovii_linii.png" alt="Деловые линии").footer__img
-							li.footer__item.footer__item_img
-								a(href="#").footer__link.footer__link_img EMS почта России
-									img(src="image/EMS.png" alt="EMS почта России").footer__img
-				.block.footer__wrap
-					.footer__block
-						p.footer__text_white © 2016 «PEST 911»
-					.footer__block
-						img(src="image/social.png")
-					.footer__block.footer__block_big
-						p.footer__text_white Создание сайта — компания 
-							a(href="#").footer__link «Пиком»
+		include footer
 
 
 
 
 
 		script(src="js/jquery-3.3.1.min.js")
+		script(src="js/owl.carousel.min.js")
 		script(src="js/common.js")
